@@ -9,6 +9,9 @@ RUN pip install -U --no-cache-dir pip && \
     make test && \
     python setup.py sdist bdist_wheel --universal
 
+RUN python -m pip uninstall werkzeug -y && \
+    python -m pip install werkzeug==0.16.0
+
 EXPOSE 5000
 
 CMD ["python3", "demo_app/app.py"]
